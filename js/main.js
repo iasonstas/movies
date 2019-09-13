@@ -136,10 +136,14 @@ function getSingleMovie() {
   //            ----------------            Function() to show Video           ----------------
 
   function videoFunc(video) {
-    var output = `
+    if (typeof video == "undefined") {
+      var output = `<h2 class="single-header pacifico">We are sorry, Trailer is not available...</h2>`;
+    } else {
+      var output = `
         <div class='video-card' >
           <iframe class="youtube-video" width="640" height="360"  src="https://www.youtube.com/embed/${video.key}?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>
         </div>`;
+    }
     setHTML(output, "#modal-text");
   }
 
@@ -175,13 +179,6 @@ function getSingleMovie() {
 
     if (count > 0) {
       $("#review-header").css("display", "visible");
-    }
-    if (count <= 2) {
-      $("#review-next").css("visibility", "hidden");
-      $("#review-back").css("visibility", "hidden");
-    } else {
-      $("#review-next").css("visibility", "visible");
-      $("#review-back").css("visibility", "hidden");
     }
     setHTML(output, "#review-content");
   }
@@ -238,31 +235,6 @@ $(document).mouseup(function(e) {
     container.parent().hide();
   }
 });
-
-//            ----------------            Next reviews           ----------------
-
-$("#review-next").on("click", function() {
-  showMeComments("next");
-});
-
-//            ----------------           Function Show me Comment.           ----------------
-function showMeComments(arrowpress) {
-  if (arrowpress == "next") {
-    if (gac < count) {
-      $("#review-next").css("visibility", "visible");
-      for (i = 1; i <= 2; i++) {
-        $(`.review-card:nth-of-type(${gac})`).hide();
-        if (gac <= count - 2) {
-          $(`.review-card:nth-of-type(${gac + 2})`).show();
-        }
-        gac = gac + 1;
-        if (gac == count - 1) {
-          $("#review-next").css("visibility", "hidden");
-        }
-      }
-    }
-  }
-}
 
 $(document).keyup(function(e) {
   if (event.keyCode === 13) {
@@ -333,7 +305,7 @@ $(window).scroll(function() {
     }
     setTimeout(function() {
       running = false;
-    }, 100);
+    }, 300);
   }
 });
 
