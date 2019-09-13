@@ -13,6 +13,7 @@ let movieList = [];
 
 function getNowPlayingList(page) {
   var text = "Now playing in theaters...";
+  searching = false;
   console.log(page);
   console.log("Movies now playing");
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${page}`;
@@ -58,7 +59,8 @@ function search(page) {
       // console.log(res.results);
       getMovies(res.results);
       setHTML(text, "#movieList-header");
-    });
+    })
+    .catch(err => console.log(err));
 }
 
 //            ------------            Set Title           ----------------
@@ -131,7 +133,8 @@ function getSingleMovie() {
     })
     .then(res => {
       videoFunc(res.results[0]);
-    });
+    })
+    .catch(err => console.log(err));
 
   //            ----------------            Function() to show Video           ----------------
 
@@ -155,7 +158,8 @@ function getSingleMovie() {
     })
     .then(res => {
       reviewsFunc(res.results);
-    });
+    })
+    .catch(err => console.log(err));
 
   //            ----------------            Function() to Get Reviews           ----------------
 
@@ -240,6 +244,7 @@ $(document).keyup(function(e) {
   if (event.keyCode === 13) {
     console.log("ENTER");
     event.preventDefault();
+    pageN = 1;
     document.getElementById("searchBtn").click();
   }
 });
