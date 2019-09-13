@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/temple.png" />
+    <link rel="manifest" href="./fav/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>MovieRama | The temple of movies</title>
+  </head>
+
+  <body>
+    <div id="main-header">
+      <div class="container disp-f">
+        <i class="fas fa-gopuram fa-5x"></i>
+        <h1 class="pacifico">MovieRama</h1>
+        <div class="searchBox">
+          <input type="text" id="searchInput" placeholder="Search movies..." />
+          <div class="fa fa-search" id="searchBtn" aria-hidden="true"></div>
+        </div>
+        <div class="img-header"></div>
+      </div>
+    </div>
+    <!-- Button to go up(Need transition fix) -->
+    <!-- onclick="topFunction('html, body')" -->
+    <div id="myBtn" title="Go to top">
+      <i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true"></i>
+    </div>
+
+    <div class="container">
+      <div class="movieList text-center">
+        <h1 class="py-2 pacifico" id="movieList-header"></h1>
+        <div id="modal" class="fadeIn modal">
+          <div class="modal-content">
+            <span id="closeBtn">&times;</span>
+            <div id="modal-text"></div>
+            <div id="review-header" class="pacifico py-1">
+              Top comments <i class="far fa-comment-alt"></i>
+            </div>
+            <div id="review-grid">
+              <div id="review-back" style="visibility:hidden"></div>
+              <div id="review-content"></div>
+              <div id="review-next" style="visibility:hidden">
+                <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div id="simovie-header" class="pacifico py-1">
+              You may also like...
+            </div>
+            <div id="simovie-grid"></div>
+          </div>
+        </div>
+        <div id="movies"></div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

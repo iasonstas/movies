@@ -1,0 +1,426 @@
+:root {
+  --primary-color: steelblue;
+  --yuhu-color: dodgerblue;
+  --secondary-color: rgba(38, 105, 105, 0.6);
+  --light-color: #f3f3f3;
+  --dark-color: #333;
+  --max-width: 1100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+  background: var(--light-color);
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+.py-1 {
+  padding: 1rem 0;
+}
+.py-2 {
+  padding: 2rem 0;
+}
+.py-5 {
+  padding: 5rem 0;
+}
+img {
+  width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Open Sans", sans-serif;
+  padding-bottom: 0.55rem;
+  line-height: 1.3;
+}
+
+.pacifico {
+  font-family: "Pacifico", cursive;
+  text-shadow: 0px 0px 20px rgb(134, 221, 255);
+}
+
+/*            ------------            Movie Card            ------------            */
+.container {
+  max-width: 90%;
+  padding: 0 2rem;
+  margin: auto;
+  overflow: hidden;
+}
+.text-center {
+  text-align: center;
+}
+
+/*            ------------            Main Header            ------------            */
+#main-header {
+  background: #003;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  height: 45vh;
+}
+#main-header h1 {
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+#main-header .logo {
+  width: 180px;
+}
+#main-header .searchBox {
+  display: inline-flex;
+  font-size: 20px;
+}
+
+#main-header .searchBox input {
+  font-size: inherit;
+  border: 0.1rem solid #aaa;
+  padding: 12px 20px;
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin-right: -20px;
+  width: 100%;
+}
+
+#main-header .searchBox input:focus {
+  border-color: var(--yuhu-color);
+  box-shadow: 0 0 8px 0 var(--yuhu-color);
+}
+
+#main-header .searchBox #searchBtn {
+  margin: 15px -15px;
+  transform: scale(1.4);
+  border: none;
+  background: transparent;
+  color: #333;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#main-header .searchBox #searchBtn:hover {
+  transform: scale(1.7);
+  transition: 0.5s;
+}
+
+#main-header .searchBox #searchBtn:focus {
+  outline: none;
+}
+#movieList-header {
+  color: rgb(0, 0, 82);
+}
+
+/*            ------------            Movies + Movie Card            ------------            */
+#movies {
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  grid-gap: 1rem;
+}
+
+#movie-card {
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 8px;
+}
+#movie-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+  border-radius: 6px;
+}
+
+#movie-card #movie-card-item {
+  min-width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  transform: scale(1);
+  /* thats for the text inside */
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#movie-card #movie-card-item:hover {
+  cursor: pointer;
+  border-radius: 8px;
+}
+#movie-card #movie-card-item:hover .background-image {
+  transform: scale(1.1);
+  border-radius: 6px;
+  transition: transform 4s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+}
+#movie-card #movie-card-item:hover #movie-card-content {
+  opacity: 0.9;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+#movie-card #movie-card-content {
+  padding: 0.5rem;
+  width: 100%;
+  margin: auto;
+  background: #000;
+  opacity: 0;
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+#movie-card #movie-card-content:hover {
+  transform: scale(1);
+}
+
+.pjustify {
+  text-align: justify;
+  text-indent: 14px;
+  max-height: 40ch;
+  overflow: auto;
+}
+
+#movie-card #movie-card-content .lead {
+  text-align: start;
+}
+
+#movie-card .both {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-around;
+}
+/*            ------------            Up button           ------------            */
+#myBtn {
+  color: #666;
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  border: #555;
+  outline: none;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px dodgerblue;
+}
+
+#myBtn:hover {
+  color: dodgerblue;
+  border-color: dodgerblue;
+  border-radius: 50%;
+  transform: scale(1.05);
+}
+/*            ------------            Modal            ------------            */
+#modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#modal .modal-content {
+  background-color: #f4f4f4;
+  margin: auto;
+  padding: 1rem;
+  width: 75%;
+  height: 100%;
+  border-radius: 6px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+#closeBtn {
+  position: fixed;
+  top: 2%;
+  right: 14.7%;
+  color: #ccc;
+  font-size: 2.1rem;
+  margin: -20px 0px;
+}
+
+#closeBtn:hover,
+#closeBtn:focus {
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  color: var(--yuhu-color);
+}
+/*            ------------            Video Card            ------------            */
+.video-card {
+  background: url(../img/video.jpg);
+  padding: 1rem;
+  margin: auto;
+  width: 92%;
+}
+/*            ------------            Review Grid            ------------            */
+
+#review-grid {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+}
+
+#review-back,
+#review-next {
+  align-self: center;
+  transition: 0.5s;
+}
+#review-back:hover,
+#review-next:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+#review-content {
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: start;
+}
+#review-content .review-card h5 {
+  /* padding: 0 1rem; */
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: end;
+}
+#review-content .review-card {
+  background: #f4f4f4;
+  padding: 1rem;
+  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+  border-radius: 10px;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 0.8rem;
+}
+
+#review-content .review-card p {
+  box-sizing: border-box;
+  text-indent: 1.5rem;
+  max-height: 39ch;
+  overflow: auto;
+  padding: 1rem 1rem 0.1rem 1rem;
+}
+
+/*            ------------            Simovie Card            ------------            */
+#simovie-header,
+#review-header {
+  font-size: 1.5rem;
+}
+#simovie-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  font-size: 14px;
+  justify-content: center;
+  grid-gap: 0.8rem;
+  width: 95%;
+  margin: 0 auto;
+  padding: 1rem 0;
+  transform: scale(1);
+}
+#simovie-grid #simovie-card {
+  overflow: hidden;
+}
+
+#simovie-card-content {
+  border-radius: 6px;
+  cursor: pointer;
+}
+#simovie-grid #simovie-card img {
+  border-radius: 6px;
+  opacity: 0.9;
+}
+#simovie-grid #simovie-card img:hover {
+  border-radius: 6px;
+  background: #f4f4f4;
+  transform: scale(1.2);
+  opacity: 1;
+  transition: 0.5s;
+  transition: transform 5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+}
+
+#simovie-grid #simovie-card:hover {
+  border-radius: 6px;
+  opacity: 1;
+}
+
+/*            ------------            Scroll Bar            ------------            */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #a6a6a6;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  width: 12px;
+  background-color: #f4f4f4;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+/*            ------------            Animation            ------------            */
+.fadeIn {
+  animation-duration: 0.7s;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1100px) {
+  #movies {
+    font-size: 11px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.7rem;
+  }
+
+  #simovie-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.6rem;
+  }
+  iframe {
+    width: 380px;
+    height: 320px;
+  }
+}
